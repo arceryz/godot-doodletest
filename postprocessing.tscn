@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn7muj2u723cm"]
+
+[ext_resource type="PackedScene" uid="uid://b58hxhurpw1y1" path="res://test.tscn" id="1_45n0d"]
+[ext_resource type="Shader" path="res://postprocessing.gdshader" id="1_nqhaf"]
+[ext_resource type="Texture2D" uid="uid://n5ab7tnnkkk8" path="res://doodle_trans.png" id="2_k0c2t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddjbf"]
+shader = ExtResource("1_nqhaf")
+shader_parameter/doodle_tex = ExtResource("2_k0c2t")
+
+[node name="postprocessing" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ddjbf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Test" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_45n0d")]

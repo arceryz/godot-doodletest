@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b58hxhurpw1y1"]
+
+[ext_resource type="Script" path="res://Camera3D.gd" id="1_rmveg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_okwu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jt5oi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s3y4"]
+
+[sub_resource type="Sky" id="Sky_g84of"]
+sky_material = SubResource("ProceduralSkyMaterial_7s3y4")
+
+[sub_resource type="Environment" id="Environment_gk2fq"]
+background_mode = 1
+background_color = Color(0.294118, 0.294118, 0.294118, 1)
+sky = SubResource("Sky_g84of")
+ambient_light_source = 2
+
+[node name="Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.8206, 0, 0, 0, 0.999999, 0, 0, 0, 10.8008, -0.242805, -0.508847, 0.101981)
+mesh = SubResource("BoxMesh_okwu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_jt5oi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.03201, 0, 0, 0, 5.05153, 0, 0, 0, 1.8169, 1.37143, 0.942369, -2.43578)
+mesh = SubResource("BoxMesh_okwu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_jt5oi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.03201, 0, 0, 0, 2.42864, 0, 0, 0, 3.36246, -2.78402, 0.942369, 1.04799)
+mesh = SubResource("BoxMesh_okwu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_jt5oi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gk2fq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.908829, 0.202311, 0.364829, -0.100788, -0.742143, 0.66262, 0.404811, -0.638979, -0.65409, 0.273652, 2.41144, -0.0752693)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.831586, -0.307335, 0.462612, 1.49012e-08, 0.832941, 0.553363, -0.555396, -0.460169, 0.692662, 3.99311, 4.33615, 5.18285)
+script = ExtResource("1_rmveg")
